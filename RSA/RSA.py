@@ -1,20 +1,16 @@
 import random
 
 primes = [
-    907,
-    911,
-    919,
-    929,
-    937,
-    941,
-    947,
-    953,
-    967,
-    971,
-    977,
-    983,
-    991,
-    997
+    45605338567645659181,
+    29699965683821154697,
+    91529041646709357619,
+    20887814968820743147,
+    24466855575609453493,
+    25621524474587894683,
+    28391038112678772677,
+    30555295561845547553,
+    89277807511090401979,
+    90891746859574193153,
 ]
 
 def Error(e):
@@ -69,6 +65,17 @@ def enc(M, E, N):
 def dec(C, D, N):
     return pow(C, D, N)
 
+def Error(e):
+    red = "\033[31m"
+    rem = "\033[0m"
+    print(red + e + rem)
+
+
+def Success(e):
+    grn = "\033[32m"
+    rem = "\033[0m"
+    print(grn + e + rem)
+
 LOGO = "                   ___  _______\nHimanshu Mahaur   / _ \\/ __/ _ | **Important**\n [2024PIS5020]   / , _/\\ \\/ __ | > Using small primes results in small moduli (N)\n                /_/|_/___/_/ |_| > Use of very large primes may lead to overflow\n"
 
 if __name__ == '__main__':
@@ -109,13 +116,14 @@ if __name__ == '__main__':
             decrypted.append(chr(M))
         newmessage = "".join(decrypted)
 
-        print("\nEncrypted: ", encrypted)
-        print("Decrypted: ", newmessage)
-
         if orgmessage == newmessage:
-            print("\nRSA Passed!")
+            print("\nEncrypted: ", encrypted)
+            print("Decrypted: ", newmessage)
+            
+            Success("\nSUCCESS: DEC(C) AND ENC(M) MATCHED!")
+
         else:
-            Error("\nError: (N) is too small\nRSA Failed!")
+            Error("\nERROR: MOD(N) DOSEN'T COVER ASCII SPACE")
 
     except:
-        Error("\nError: Overflow/Invalid input\nRSA Failed!")
+        Error("\nERROR: INVALID INPUT/OVERFLOW\nRSA FAILED!")
