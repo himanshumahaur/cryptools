@@ -126,4 +126,4 @@ if __name__ == '__main__':
             Error("\nERROR: MOD(N) DOSEN'T COVER ASCII SPACE")
 
     except:
-        Error("\nERROR: INVALID INPUT/OVERFLOW\nRSA FAILED!")
+        Error("\nERROR: INVALID INPUT/OVERFLOW")
