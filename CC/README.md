@@ -1,22 +1,47 @@
 # Caesar Cipher
 
-This C++ program implements a basic Caesar cipher for encryption and decryption. It includes features for handling user input and providing colored output for success and error messages.
+This section of the repository contains flexible C++ code related to the Caesar cipher algorithm. It includes implementations for encryption, decryption, and analysis.
 
-## Features
+## Implementations
 
-- **Caesar Cipher Encryption**: Encrypts messages using the Caesar cipher algorithm.
-- **Caesar Cipher Decryption**: Decrypts messages encrypted with the Caesar cipher.
-- **Color-coded Messages**: Utilizes ANSI escape codes to display success and error messages in color.
-- **Whitespace Preservation**: Maintains spaces in the message during encryption and decryption.
+| **Implementation**                      | **Description**                                                                                          |
+|----------------------------------------|----------------------------------------------------------------------------------------------------------|
+| **Caesar Cipher Encryption and Decryption** | Implements Caesar cipher for encrypting and decrypting messages. Includes color-coded success and error messages, and preserves whitespace. |
+| **Frequency Analysis**                  | Analyzes character frequencies in encrypted messages to estimate the most likely encryption key.         |
 
-## Components
+## Encryption and Decryption
 
-### 1. Error and Success Handling
+This implementation provides functionality for both encrypting and decrypting messages using the Caesar cipher technique. 
 
-- **Error Messages**: Displayed in red to indicate issues, such as invalid input.
-- **Success Messages**: Displayed in green to confirm successful operations.
+### Features
 
-### 2. Encryption and Decryption
+- **Encryption**: Transforms a message into an encrypted format by shifting characters according to a specified key. Non-alphabetic characters are preserved as spaces.
+- **Decryption**: Reverses the encryption process to restore the original message using the same key. Non-alphabetic characters are preserved as spaces.
+- **Whitespace Preservation**: Spaces in the original message are maintained during encryption and decryption.
 
-- **Encryption Function**: Transforms a message into an encrypted format by shifting characters by a specified key.
-- **Decryption Function**: Reverses the encryption process to restore the original message using the same key.
+### Functions
+
+- **`encr(string msg, int key)`**: Encrypts a given message by shifting characters by the specified key.
+- **`decr(string cip, int key)`**: Decrypts an encrypted message by reversing the shift with the same key.
+
+### Error Handling
+
+- **Error Messages**: Displays in red to indicate issues such as invalid input or other errors.
+- **Success Messages**: Displays in green to confirm successful operations.
+
+### Usage
+
+1. **Compile the Code**: Use a C++ compiler to compile the provided code files.
+2. **Run the Program**: Execute the compiled program. You will be prompted to enter a message and a key for encryption or decryption.
+
+## Frequency Analysis
+
+This implementation focuses on analyzing the frequency of characters in an encrypted message to estimate the most likely key used for encryption. It includes:
+
+- **Frequency Analysis**: Computes the frequency distribution of letters in the encrypted message and compares it with standard English letter frequencies.
+- **Key Estimation**: Determines the most likely key by comparing the frequency distributions.
+
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
