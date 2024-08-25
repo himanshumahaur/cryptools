@@ -2,7 +2,7 @@
 using namespace std;
 
 vector<float> stdFat = {8.17, 1.49, 2.78, 4.25, 12.70, 2.23, 2.02, 6.09, 6.97, 0.15, 0.77, 4.03, 2.41, 6.75, 7.51, 1.93, 0.10, 5.99, 6.33, 9.06, 2.76, 0.98, 2.36, 0.15, 1.97, 0.07};
-string LOGO = "\n                 ______   ______   ______   ___\n                / ____/  / ____/  / ____/  /   |\n  Himanshu     / /      / /      / /_     / /| | > Message: [A-Z][a-z] Other symbols are ignored.\n   Mahaur     / /___   / /___   / __/    / ___ | > Key: Numeric & Alphabet keys supported.\n 2024PIS5020  \\____/   \\____/  /_/      /_/  |_|\n               CEASER CIPHER FREQUENCY ANALYSIS\n";
+string LOGO = "\n                 ______   ______   ______   ___\n                / ____/  / ____/  / ____/  /   |\n  Himanshu     / /      / /      / /_     / /| | > Message: [A-Z][a-z] Other symbols are ignored.\n   Mahaur     / /___   / /___   / __/    / ___ | > Key: Numeric & Alphabet keys supported.\n 2024PIS5020  \\____/   \\____/  /_/      /_/  |_|\n               CAESAR CIPHER FREQUENCY ANALYSIS\n";
 
 void error(string e) {
     string red = "\033[31m";

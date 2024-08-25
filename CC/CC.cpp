@@ -25,7 +25,7 @@ string decr(string cip, int key) {
     return msg;
 }
 
-string LOGO = "                 ______        ______\n  Himanshu      / ____/       / ____/\n   Mahaur      / /           / /\n2024PIS5020   / /___        / /___\n              \\____/ AESER  \\____/ IPHER\n";
+string LOGO = "                 ______        ______\n  Himanshu      / ____/       / ____/\n   Mahaur      / /           / /\n2024PIS5020   / /___        / /___\n              \\____/ AESAR  \\____/ IPHER\n";
 
 int main() {
     string rawMsg;
