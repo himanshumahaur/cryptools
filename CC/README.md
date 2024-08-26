@@ -8,6 +8,7 @@ This section of the repository contains flexible C++ code related to the Caesar 
 |----------------------------------------|----------------------------------------------------------------------------------------------------------|
 | **Caesar Cipher Encryption and Decryption** | Implements Caesar cipher for encrypting and decrypting messages. Includes color-coded success and error messages, and preserves whitespace. |
 | **Frequency Analysis**                  | Analyzes character frequencies in encrypted messages to estimate the most likely encryption key.         |
+| **Dictionary Attack**                   | Uses a predefined dictionary of common words to estimate the encryption key by comparing decrypted messages with known words. |
 
 ## Encryption and Decryption
 
@@ -41,6 +42,13 @@ This implementation focuses on analyzing the frequency of characters in an encry
 - **Frequency Analysis**: Computes the frequency distribution of letters in the encrypted message and compares it with standard English letter frequencies.
 - **Key Estimation**: Determines the most likely key by comparing the frequency distributions.
 
+## Dictionary Attack
+
+This implementation employs a dictionary attack strategy to estimate the Caesar cipher key:
+
+- **Decryption and Dictionary Matching**: The program decrypts the encrypted message using all possible Caesar cipher keys (0 to 25) and compares the results with a predefined dictionary of common words to identify the key that produces the most meaningful output.
+
+- **Key Estimation**: The key corresponding to the decrypted message with the highest number of matching dictionary words is considered the most likely encryption key.
 
 ## License
 

@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<float> stdFat = {8.17, 1.49, 2.78, 4.25, 12.70, 2.23, 2.02, 6.09, 6.97, 0.15, 0.77, 4.03, 2.41, 6.75, 7.51, 1.93, 0.10, 5.99, 6.33, 9.06, 2.76, 0.98, 2.36, 0.15, 1.97, 0.07};
-string LOGO = "\n                 ______   ______   ______   ___\n                / ____/  / ____/  / ____/  /   |\n  Himanshu     / /      / /      / /_     / /| | > Message: [A-Z][a-z] Other symbols are ignored.\n   Mahaur     / /___   / /___   / __/    / ___ | > Key: Numeric & Alphabet keys supported.\n 2024PIS5020  \\____/   \\____/  /_/      /_/  |_|\n               CAESAR CIPHER FREQUENCY ANALYSIS\n";
+map<string, bool> dict = {{"THE", true}, {"BE", true}, {"TO", true}, {"OF", true}, {"AND", true}, {"A", true}, {"IN", true}, {"THAT", true}, {"HAVE", true}, {"I", true}, {"IT", true}, {"FOR", true}, {"NOT", true}, {"ON", true}, {"WITH", true}, {"HE", true}, {"AS", true}, {"YOU", true}, {"DO", true}, {"AT", true}, {"THIS", true}, {"BUT", true}, {"HIS", true}, {"BY", true}, {"FROM", true}, {"THEY", true}, {"WE", true}, {"SAY", true}, {"HER", true}, {"SHE", true}, {"OR", true}, {"AN", true}, {"WILL", true}, {"MY", true}, {"ONE", true}, {"ALL", true}, {"WOULD", true}, {"THERE", true}, {"THEIR", true}, {"WHAT", true}, {"SO", true}, {"UP", true}, {"OUT", true}, {"IF", true}, {"ABOUT", true}, {"WHO", true}, {"GET", true}, {"WHICH", true}, {"GO", true}, {"ME", true}, {"WHEN", true}, {"MAKE", true}, {"CAN", true}, {"LIKE", true}, {"TIME", true}, {"NO", true}, {"JUST", true}, {"HIM", true}, {"KNOW", true}, {"TAKE", true}, {"PEOPLE", true}, {"INTO", true}, {"YEAR", true}, {"YOUR", true}, {"GOOD", true}, {"SOME", true}, {"COULD", true}, {"THEM", true}, {"SEE", true}, {"OTHER", true}, {"THAN", true}, {"THEN", true}, {"NOW", true}, {"LOOK", true}, {"ONLY", true}, {"COME", true}, {"ITS", true}, {"OVER", true}, {"THINK", true}, {"ALSO", true}, {"BACK", true}, {"AFTER", true}, {"USE", true}, {"TWO", true}, {"HOW", true}, {"OUR", true}, {"WORK", true}, {"FIRST", true}, {"WELL", true}, {"WAY", true}, {"EVEN", true}, {"NEW", true}, {"WANT", true}, {"BECAUSE", true}, {"ANY", true}, {"THESE", true}, {"GIVE", true}, {"DAY", true}, {"MOST", true}};
+string LOGO = "                ______   ______   ____     ___   \n               / ____/  / ____/  / __ \\   /   |  \n Himanshu     / /      / /      / / / /  / /| |  > Message: [A-Z][a-z] Other symbols are ignored.\n  Mahaur     / /___   / /___   / /_/ /  / ___ |  > Key: Numeric & Alphabet keys supported.\n2024PIS5020  \\____/   \\____/  /_____/  /_/  |_|  \n             CAESAR  CIPHER  DICTIONARY  ATTACK\n";
 
 void error(string e) {
     string red = "\033[31m";
@@ -34,15 +34,24 @@ string clnr(string msg) {
     return clnMsg;
 }
 
-vector<float> fanr(string msg) {
-    vector<float> fat(26);
-    for(auto i:msg) fat[i-'A']++;
-    for(int i=0; i<26; i++) fat[i] = 100 * fat[i] / msg.length();
-    return fat;
+bool cmp(const pair<char, float> &a, const pair<char, float> &b) {
+    return b.second < a.second;
 }
 
-bool cmp(const pair<char, float> &a, const pair<char, float> &b) {
-    return b.second > a.second;
+int words(string &curMsg) {
+    int count = 0;
+    string curWrd;
+    curMsg += ' ';
+    
+    for(auto i:curMsg) {
+        if(i==' ') {
+            if(dict.count(curWrd)) count++;
+            curWrd.clear();
+        }
+        else curWrd += i;
+    }
+
+    return count;
 }
 
 int main() {
@@ -54,7 +63,6 @@ int main() {
     string encMsg;
 
     string clnMsg;
-    string cenMsg;
 
     string keyInp;
 
@@ -79,6 +87,8 @@ int main() {
     while(true) {
         cout << "\nEnter Key: ";
         getline(cin, keyInp);
+
+        cout <<keyInp << endl;
         try {
             if(isalpha(keyInp[0])) key = toupper(keyInp[0]) - 'A';
             else if(isdigit(keyInp[0])) key = stoi(keyInp);
@@ -96,20 +106,17 @@ int main() {
     cout << "Encrypted Message\t:\t" << (encMsg.size() < 40 ? encMsg : encMsg.substr(0, 40) + "...") << endl;
 
     clnMsg = clnr(rawMsg);
-    cenMsg = encr(clnMsg, key);
 
-    vector<pair<char, float>> resFat;
+    vector<pair<char, int>> resFat;
 
     for(int k=0; k<26; k++) {
         string curMsg = decr(encMsg, k);
-        vector<float> curFat= fanr(curMsg);
-        resFat.push_back({'A'+k, 0});
-        for(int i=0; i<26; i++) resFat[k].second += abs(curFat[i] - stdFat[i]);
+        resFat.push_back({'A'+k, words(curMsg)});
     }
 
     sort(resFat.begin(), resFat.end(), cmp);
 
-    cout << "\n|\t" << "ORDER" << "\t|\t" << "KEY" << "\t|\t" << "SHIFT" << "\t\t|\n";
+    cout << "\n|\t" << "ORDER" << "\t|\t" << "KEY" << "\t|\t" << "MATCHED" << "\t\t|\n";
     for(int i=0; i<26; i++) cout << "|\t" << i + 1 << "\t|\t" << resFat[i].first << "\t|\t" << resFat[i].second << "\t\t|\n";
 
     success("\nSuccess: Table generatated.\n");
