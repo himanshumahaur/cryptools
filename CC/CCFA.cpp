@@ -104,7 +104,7 @@ int main() {
         string curMsg = decr(encMsg, k);
         vector<float> curFat= fanr(curMsg);
         resFat.push_back({'A'+k, 0});
-        for(int i=0; i<26; i++) resFat[k].second += abs(curFat[i] - stdFat[i]);
+        for(int i=0; i<26; i++) resFat[k].second += pow(curFat[i] - stdFat[i], 2)/stdFat[i];
     }
 
     sort(resFat.begin(), resFat.end(), cmp);
