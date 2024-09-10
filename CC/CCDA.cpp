@@ -96,9 +96,22 @@ int main() {
             break;
         }
         catch(invalid_argument& e) {
-            error("Error: The key entered is not a number.\n");
+            error("Error: The key entered is not an alphabet/number.\n");
         }
     }
+
+    // Dictionary Module for Cryptography Assignment
+
+    // cout << "\nDictionary [' ' separated words]: ";
+
+    // string line;
+    // getline(cin, line);
+
+    // istringstream stream(line);
+    // string word;
+
+    // dict.clear();
+    // while(stream >> word) dict[word] = true;
 
     encMsg = encr(rawMsg, key);
 
