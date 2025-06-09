@@ -40,7 +40,3 @@ This Python script demonstrates a basic implementation of RSA encryption and dec
 
 - **Small Modulus Warning**: Using very small primes may result in a modulus (`N`) that is too small, potentially leading to insufficient security and functional issues.
 - **Overflow Error**: Ensure that the primes and messages used do not cause overflow in the calculations.
-
-## License
-
-This project is licensed under the MIT License.
